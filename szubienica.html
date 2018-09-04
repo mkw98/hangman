@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Szubienica</title>
+</head>
+<body>
+  <h1>Szubienica!</h1>
+  <script>
+    //utworz tablice ze slowami
+    var words = [
+      "porcelana",
+      "marabut",
+      "drzeworyt",
+      "iluminacja"
+    ];
+    //wybierzlosowe slowo
+    var word = words[Math.floor(Math.random()*words.length)];
+    //skonfiguruj tablice z odpowiedziami
+    var answers = [];
+    for (var i = 0; i <word.length; i++) {
+      answers[i] = "_";
+    }
+    var letters = word.length;
+    
+    //glowna petla gry
+    while (letters > 0) {
+    alert(answers.join(""));
+    
+    //wczytajodpowiedzi uzytkownika
+    var shot = prompt("Podaj literę lub kliknij anuluj, aby zakończyć grę.");
+    if (shot === null) {
+    //wyjdź z głównej pętligry
+    break;
+    } else if (shot.length !== 1) {
+      alert("Proszę podaj tylko jedną literę");
+    } else {
+      //zaktualizuj stan gry na podstawi strzału
+    for (var j = 0; j <word.length; j++) {
+      if (word[j] === shot) {
+        answers[j] = shot;
+        letters--;
+      }
+    }   
+  }
+//koniec glownej petli gry
+    }
+    //pokaz odpowiedz i zloz gratulacje
+    alert(answers.join(""));
+    alert("Świetnie! Szukane słowo to " + word);
+  </script>
+</body>
+</html>
